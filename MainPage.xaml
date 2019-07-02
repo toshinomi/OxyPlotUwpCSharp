@@ -5,10 +5,36 @@
     xmlns:local="using:OxyPlotUwpCSharp"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:oxy="using:OxyPlot.Windows"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
+    <Page.DataContext>
+        <local:MainViewModel/>
+    </Page.DataContext>
+    
     <Grid>
+        <AppBar Background="#33ff00ff" >
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <StackPanel Orientation="Horizontal">
+
+                    <AppBarButton x:Name="btnBack" Label="OpenFile" Click="OnClickFileSelect">
+                        <AppBarButton.Icon>
+                            <SymbolIcon Symbol="OpenFile" />
+                        </AppBarButton.Icon>
+                    </AppBarButton>
+                </StackPanel>
+            </Grid>
+        </AppBar>
+        <Border BorderBrush="White" BorderThickness="2" Margin="300,70,300,0" Height="295" VerticalAlignment="Top">
+            <Image x:Name="Image" Margin="20,20,20,20"/>
+        </Border>
+        <Grid Margin="20,390,20,10">
+            <oxy:PlotView Model="{Binding MyModel}"/>
+        </Grid>
 
     </Grid>
 </Page>
